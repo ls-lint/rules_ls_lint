@@ -1,7 +1,21 @@
-load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@bazel_gazelle//:def.bzl", "gazelle", "gazelle_binary")
 
 # gazelle:prefix github.com/ls-lint/rules_ls_lint
-gazelle(name = "gazelle")
+# gazelle:exclude .idea
+# gazelle:exclude bazel-*
+gazelle(
+    name = "gazelle",
+    gazelle = ":gazelle_bin",
+)
+
+gazelle_binary(
+    name = "gazelle_bin",
+    languages = [
+        "@bazel_gazelle//language/go",
+        "@bazel_gazelle//language/proto",
+        "//internal/language/ls_lint_filegroup",
+    ],
+)
 
 config_setting(
     name = "darwin_arm64",
@@ -25,5 +39,24 @@ alias(
         ":darwin_arm64": "@com_github_loeffel_io_ls_lint_darwin_arm64//file:ls-lint",
         "//conditions:default": "@com_github_loeffel_io_ls_lint_linux_amd64//file:ls-lint",
     }),
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "ls_lint_files",
+    testonly = True,
+    srcs = [
+        ".bazelignore",
+        ".bazelversion",
+        ".gitignore",
+        "BUILD.bazel",
+        "README.md",
+        "WORKSPACE",
+        "go.mod",
+        "go.sum",
+        "repositories.bzl",
+        "//internal:ls_lint_files",
+        "//pkg:ls_lint_files",
+    ],
     visibility = ["//visibility:public"],
 )

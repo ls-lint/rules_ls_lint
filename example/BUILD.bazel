@@ -1,4 +1,10 @@
+#load("@bazel_gazelle//:def.bzl", "gazelle", "gazelle_binary")
 load("@com_github_ls_lint_rules_ls_lint//:pkg/ls_lint.bzl", "ls_lint_test")
+
+## asdf:prefix github.com/ls-lint/rules_ls_lint/example
+## asdf:exclude .idea
+## a:exclude bazel-*
+## asdf(name = "gazelle")
 
 ls_lint_test(
     data = [

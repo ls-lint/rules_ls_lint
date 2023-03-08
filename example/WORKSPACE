@@ -4,19 +4,19 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 ## rules_ls_lint ###########################################
 ############################################################
 
-#local_repository(
-#    name = "com_github_ls_lint_rules_ls_lint",
-#    path = "..",
-#)
-
-http_archive(
+local_repository(
     name = "com_github_ls_lint_rules_ls_lint",
-    sha256 = "de96e95786563b7e265d5538f306352feb7266a76c614062bce9d78b6ee22221",
-    strip_prefix = "rules_ls_lint-0.1.1",
-    urls = [
-        "https://github.com/ls-lint/rules_ls_lint/archive/refs/tags/v0.1.1.tar.gz",
-    ],
+    path = "..",
 )
+
+#http_archive(
+#    name = "com_github_ls_lint_rules_ls_lint",
+#    sha256 = "de96e95786563b7e265d5538f306352feb7266a76c614062bce9d78b6ee22221",
+#    strip_prefix = "rules_ls_lint-0.1.1",
+#    urls = [
+#        "https://github.com/ls-lint/rules_ls_lint/archive/refs/tags/v0.1.1.tar.gz",
+#    ],
+#)
 
 load("@com_github_ls_lint_rules_ls_lint//:repositories.bzl", "rules_ls_lint_dependencies")
 
@@ -36,6 +36,6 @@ go_register_toolchains(version = "1.20.2")
 ## gazelle: setup ##########################################
 ############################################################
 
-load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
+load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 
 gazelle_dependencies()

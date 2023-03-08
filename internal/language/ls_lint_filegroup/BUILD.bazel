@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "ls_lint_filegroup",
+    srcs = ["lang.go"],
+    importpath = "github.com/ls-lint/rules_ls_lint/internal/language/ls_lint_filegroup",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "@bazel_gazelle//config:go_default_library",
+        "@bazel_gazelle//label:go_default_library",
+        "@bazel_gazelle//language:go_default_library",
+        "@bazel_gazelle//repo:go_default_library",
+        "@bazel_gazelle//resolve:go_default_library",
+        "@bazel_gazelle//rule:go_default_library",
+    ],
+)
+
+filegroup(
+    name = "ls_lint_files",
+    testonly = True,
+    srcs = [
+        "BUILD.bazel",
+        "lang.go",
+    ],
+    visibility = ["//visibility:public"],
+)

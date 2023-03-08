@@ -1,0 +1,9 @@
+filegroup(
+    name = "ls_lint_files",
+    testonly = True,
+    srcs = [
+        "BUILD.bazel",
+        "//internal/language/ls_lint_filegroup:ls_lint_files",
+    ],
+    visibility = ["//visibility:public"],
+)

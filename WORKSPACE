@@ -32,7 +32,7 @@ http_archive(
     ],
 )
 
-load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
+load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 
 gazelle_dependencies()
 
@@ -40,6 +40,9 @@ gazelle_dependencies()
 ## rules_ls_lint ###########################################
 ############################################################
 
-load("//:repositories.bzl", "rules_ls_lint_dependencies")
+load("//:repositories.bzl", "go_repositories", "rules_ls_lint_dependencies")
 
 rules_ls_lint_dependencies(version = "1.11.2")
+
+# gazelle:repository_macro repositories.bzl%go_repositories
+go_repositories()

@@ -1,0 +1,38 @@
+############################################################
+## rules_ls_lint ###########################################
+############################################################
+
+#local_repository(
+#    name = "com_github_ls_lint_rules_ls_lint",
+#    path = "..",
+#)
+
+#http_archive(
+#    name = "com_github_ls_lint_rules_ls_lint",
+#    sha256 = "ecba0f04f96b4960a5b250c8e8eeec42281035970aa8852dda73098274d14a1d",
+#    urls = [
+#        "https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.29.0/bazel-gazelle-v0.29.0.tar.gz",
+#    ],
+#)
+
+load("@com_github_ls_lint_rules_ls_lint//:repositories.bzl", "rules_ls_lint_dependencies")
+
+rules_ls_lint_dependencies(version = "1.11.2")
+
+############################################################
+## rules_go: setup #########################################
+############################################################
+
+load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+
+go_rules_dependencies()
+
+go_register_toolchains(version = "1.20.2")
+
+############################################################
+## gazelle: setup ##########################################
+############################################################
+
+load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
+
+gazelle_dependencies()

@@ -1,0 +1,5 @@
+filegroup(
+    name = "ls_lint_files",
+    srcs = glob(["**"]),
+    visibility = ["//visibility:public"],
+)

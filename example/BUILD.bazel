@@ -1,0 +1,7 @@
+load("@com_github_ls_lint_rules_ls_lint//:pkg/ls_lint.bzl", "ls_lint_test")
+
+ls_lint_test(
+    data = [
+        "//test:ls_lint_files",
+    ],
+)

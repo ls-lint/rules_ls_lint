@@ -42,4 +42,4 @@ gazelle_dependencies()
 
 load("//:repositories.bzl", "rules_ls_lint_dependencies")
 
-rules_ls_lint_dependencies()
+rules_ls_lint_dependencies(version = "1.11.2")
